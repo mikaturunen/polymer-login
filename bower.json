@@ -28,6 +28,6 @@
   ],
   "dependencies": {
     "polymer": "Polymer/polymer#1.0.0",
-
+    "paper-dialog": "PolymerElements/paper-dialog#1.0.0"
   }
 }
