@@ -1,0 +1,25 @@
+link(rel="import" href="../../webcomponentsjs/webcomponents-lite.min.js")
+link(rel="import" href="../../core-icon-button/core-icon-button.html")
+link(rel="import" href="../../paper-dialog/paper-dialog.html")
+link(rel="import" href="../../paper-dialog-scrollable/paper-dialog-scrollable.html")
+link(rel="import" href="../../paper-button/paper-button.html")
+
+
+dom-module(id="polymer-login")
+    template
+        //- Login dialog that is shown when the user clicks the login icon.
+        paper-dialog(id="LoginDialog")
+            h2 Header
+            paper-dialog-scrollable
+                Lorem ipsum...
+            div.buttons
+                paper-button(dialog-dismiss) Cancel
+                paper-button(dialog-confirm) Accept
+                
+        //- Logout dialog that is shown when the user clicks the logout icon.
+        //- Logout icon is only shown when the state of the user is "authed".
+        
+        //- The actual icons and when to show them and their related actions.
+        paper-icon-button(icon="account-box" on-click="{{openLoginDialog}}")
+
+    script(src="./polymer-login.js")
