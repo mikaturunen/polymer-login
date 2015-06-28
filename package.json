@@ -1,0 +1,48 @@
+{
+  "name": "polymer-login",
+  "version": "0.0.1",
+  "description": "Polymer component for logging in the user to a given source.",
+  "main": "gulpfile.js",
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mikaturunen/polymer-login"
+  },
+  "keywords": [
+    "login",
+    "authentication",
+    "components",
+    "element",
+    "polymer"
+  ],
+  "author": "Mika Turunen <mika.turunen@ymail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mikaturunen/polymer-login/issues"
+  },
+  "homepage": "https://github.com/mikaturunen/polymer-login",
+  "devDependencies": {
+    "browserify": "^9.0.8",
+    "event-stream": "^3.3.0",
+    "gulp": "^3.8.11",
+    "gulp-babel": "^5.1.0",
+    "gulp-copy": "0.0.2",
+    "gulp-ignore": "^1.2.1",
+    "gulp-install": "^0.4.0",
+    "gulp-jade": "^1.0.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-rimraf": "^0.1.1",
+    "gulp-sourcemaps": "^1.5.2",
+    "gulp-tslint": "^2.0.0",
+    "gulp-typescript": "^2.6.0",
+    "gulp-uglify": "^1.2.0",
+    "rimraf": "^2.3.2",
+    "run-sequence": "^1.0.2",
+    "tsify": "^0.8.1",
+    "tslint": "^2.1.1",
+    "typescript": "^1.5.0-beta",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0"
+  }
+}

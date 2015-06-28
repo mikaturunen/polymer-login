@@ -1,0 +1,33 @@
+{
+  "name": "polymer-login",
+  "version": "0.0.1",
+  "homepage": "https://github.com/mikaturunen/polymer-login",
+  "authors": [
+    "Mika Turunen <mika.turunen@ymail.com>"
+  ],
+  "description": "Polymer component for logging in the user to a given source.",
+  "moduleType": [
+    "es6"
+  ],
+  "main": "",
+  "keywords": [
+    "login",
+    "authentication",
+    "polymer",
+    "component",
+    "webcomponents",
+    "typescript"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#1.0.0",
+
+  }
+}

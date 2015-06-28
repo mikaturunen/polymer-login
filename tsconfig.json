@@ -1,0 +1,22 @@
+{
+    "version": "1.5.0-alpha",
+    "compilerOptions": {
+        "target": "es5",
+        "module": "commonjs",
+        "declaration": false,
+        "noImplicitAny": false,
+        "removeComments": true,
+        "noLib": false,
+        "preserveConstEnums": true,
+        "suppressImplicitAnyIndexErrors": true
+    },
+    "filesGlob": [
+        "./typescript/**/*.ts",
+        "../yhbt-definitions/typedefinitions/client.d.ts",
+        "!./node_modules/**/*.ts"
+    ],
+    "files": [
+        "./typescript/yhbt-header.ts",
+        "../yhbt-definitions/typedefinitions/client.d.ts"
+    ]
+}
