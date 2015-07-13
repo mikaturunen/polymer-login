@@ -4,7 +4,7 @@ Polymer({
     /**
      * What component we are attached to.
      */
-    is: "yhbt-header",
+    is: "polymer-login",
 
     /** Opens Login dialog */
     openLoginDialog: function() {

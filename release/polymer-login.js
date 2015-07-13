@@ -1,6 +1,6 @@
 "use strict";
 Polymer({
-    is: "yhbt-header",
+    is: "polymer-login",
     openLoginDialog: function () {
         this.$.LoginDialog.open();
     }
