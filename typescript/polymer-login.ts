@@ -62,8 +62,13 @@ Polymer({
      * Callback for login reponse.
      */
     loginResponse: function(result: any) {
-        console.log(result);
-        // If everything went as expected, we close the dialog and have the cookie move with us
+        if (result.detail.succeeded === true) {
+            // TODO Token received -- handle token and token passing (store in local storage?)
+            console.log(result);
+        } else {
+            // TODO fix the property and set the correct message
+            this.loginError({ message: "NUUU" });
+        }
     },
 
     tryLogout: function() {
