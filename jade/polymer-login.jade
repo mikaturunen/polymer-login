@@ -18,8 +18,8 @@ dom-module(id="polymer-login")
         //- Login AJAX call
         iron-ajax(
             id="TryLogin"
+            method="POST"
             url="[[loginRoute]]"
-            params='{"user":"name", "pass":"word"}'
             handle-as="json"
             on-response="loginResponse")
         //- Logout AJAX call
@@ -28,14 +28,14 @@ dom-module(id="polymer-login")
             url="[[logoutRoute]]"
             params='{"user":"name", "pass":"word"}'
             handle-as="json"
-            on-response="handleResponse")
+            on-response="logoutResponse")
     
         //- Login dialog that is shown when the user clicks the login icon.
         paper-dialog(id="LoginDialog")
             h2 Login
             div
-                paper-input(id="InputUserName" label="Username" type="text")
-                paper-input(label="Password" type="password")
+                paper-input(id="InputUserName" label="Username" type="text" autofocus="true")
+                paper-input(id="InputPassword" label="Password" type="password")
             div.buttons
                 paper-button(dialog-dismiss) Cancel
                 paper-button(on-click="tryLogin") Accept
