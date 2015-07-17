@@ -26,7 +26,7 @@ Polymer({
         if (!this.consoleLogsSilenced) {
             console.log("Attempting to login the user through route:", this.loginRoute);
         }
-        this.$.TryLoging.generateRequest();
+        this.$.TryLogin.generateRequest();
     },
     tryLogout: function () {
         if (!this.consoleLogsSilenced) {
