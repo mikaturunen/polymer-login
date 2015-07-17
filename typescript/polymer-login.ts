@@ -65,6 +65,8 @@ Polymer({
         if (result.detail.succeeded === true) {
             // TODO Token received -- handle token and token passing (store in local storage?)
             console.log(result);
+            this.$.LoginDialog.close();
+            // TODO pass token information forward and make sure it's included in all other calls
         } else {
             // TODO fix the property and set the correct message
             this.loginError({ message: "NUUU" });
