@@ -10,7 +10,7 @@ Polymer({
             type: String,
             value: "/user/login"
         },
-        silence: {
+        consoleLogsSilenced: {
             type: Boolean,
             value: true
         }
@@ -18,18 +18,18 @@ Polymer({
     openLoginDialog: function () {
         this.$.LoginDialog.open();
         this.$.InputUserName.focus();
-        if (!this.silence) {
+        if (!this.consoleLogsSilenced) {
             console.log(this.loginRoute, this.logoutRoute);
         }
     },
     tryLogin: function () {
-        if (!this.silence) {
+        if (!this.consoleLogsSilenced) {
             console.log("Attempting to login the user through route:", this.loginRoute);
         }
         this.$.TryLoging.generateRequest();
     },
     tryLogout: function () {
-        if (!this.silence) {
+        if (!this.consoleLogsSilenced) {
             console.log("Attempting to logout the user through route:", this.logoutRoute);
         }
         this.$.TryLogout.generateRequest();
