@@ -3,22 +3,42 @@ link(rel="import" href="/../../iron-iconset/iron-iconset.html")
 link(rel="import" href="../../paper-dialog/paper-dialog.html")
 link(rel="import" href="../../paper-dialog-scrollable/paper-dialog-scrollable.html")
 link(rel="import" href="../../paper-button/paper-button.html")
+link(rel="import" href="../../paper-input/paper-input.html")
 link(rel="import" href="../../paper-icon-button/paper-icon-button.html")
 
+//-
+    Most use cases the polymer-login displays a simple "login" or "logout" icon 
+    and when user clicks on the icon a dialog opens either asking the user to login
+    or logout. When user performs either of the actions a AJAX call to a provided REST
+    interface is executed and the user is either logged out or logged in from the system.
+    
 dom-module(id="polymer-login")
     template
+        //- Login AJAX call
+        iron-ajax(
+            id="TryLogin"
+            url="[[loginRoute]]"
+            params='{"user":"name", "pass":"word"}'
+            handle-as="json"
+            on-response="loginResponse")
+        //- Logout AJAX call
+        iron-ajax(
+            id="TryLogout"
+            url="[[logoutRoute]]"
+            params='{"user":"name", "pass":"word"}'
+            handle-as="json"
+            on-response="handleResponse")
+    
         //- Login dialog that is shown when the user clicks the login icon.
         paper-dialog(id="LoginDialog")
-            h2 Header
-            paper-dialog-scrollable
-                Lorem ipsum...
+            h2 Login
+            div
+                paper-input(id="InputUserName" label="Username" type="text")
+                paper-input(label="Password" type="password")
             div.buttons
                 paper-button(dialog-dismiss) Cancel
-                paper-button(dialog-confirm) Accept
-                
-        //- Logout dialog that is shown when the user clicks the logout icon.
-        //- Logout icon is only shown when the state of the user is "authed".
-        
+                paper-button(on-click="tryLogin") Accept
+
         //- The actual icons and when to show them and their related actions.
         paper-icon-button(icon="account-box" on-click="openLoginDialog")
         span blah
