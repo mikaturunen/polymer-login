@@ -8,15 +8,20 @@ Polymer({
         /** {string} Login route the component should use when attempting to login the user. */
         loginRoute: {
             type: String,
-            // TODO change default to /login after we've confirmed the attribute work
-            value: "/user/login"
+            value: "/login"
         },
 
         /** {string} Logout route the component should use when attemping to logout the user. */
         logoutRoute: {
             type: String,
-            value: "/user/login"
-        }
+            value: "/logout"
+        },
+
+        /** {boolean} False when the user is not logged in, true when they have logged in. */
+        status: {
+            type: Object,
+            value: { loggedIn: false }
+        },
     },
 
     /**
@@ -27,6 +32,13 @@ Polymer({
         this.$.InputUserName.focus();
 
         console.log(this.loginRoute, this.logoutRoute);
+    },
+
+    /**
+     * Opens Logout dialog.
+     */
+    openLogoutDialog: function() {
+        this.$.LogoutDialog.open();
     },
 
     /**
@@ -44,8 +56,9 @@ Polymer({
 
     /**
      * Callback for the login errors.
+     * @param {Error} error Error details.
      */
-    loginError: function(error: any) {
+    handleError: function(error: any) {
         console.log("Error:", error);
     },
 
@@ -56,25 +69,19 @@ Polymer({
         if (this.$.TryLogin.lastError || !this.$.TryLogin.lastResponse) {
             // Error, something went wrong.
             // TODO fix the property and set the correct message
-            this.loginError({ message: "NUUU", callDetails: result });
+            this.handleError({ message: "NUUU", callDetails: result });
             return;
         }
 
         // User credentials received and the user has logged in.
         console.log(this.$.TryLogin.lastResponse);
+        this.isLoggedIn = true;
         this.$.LoginDialog.close();
     },
 
     tryLogout: function() {
         console.log("Attempting to logout the user through route:", this.logoutRoute);
         this.$.TryLogout.generateRequest();
-    },
-
-    /**
-     * Callback for the logout errors.
-     */
-    logoutError: function(error: any) {
-        console.log(error);
     },
 
     /**

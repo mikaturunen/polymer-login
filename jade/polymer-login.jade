@@ -40,9 +40,21 @@ dom-module(id="polymer-login")
                 paper-input(id="InputPassword" label="Password" type="password")
             div.buttons
                 paper-button(dialog-dismiss) Cancel
-                paper-button(on-click="tryLogin") Accept
+                paper-button(on-click="tryLogin") Login
+                
+        //- Logout dialog that is shown when the user clicks the logout icon.
+        paper-dialog(id="LogoutDialog")
+            h2 Login
+            div
+                Do you really want to log out?
+            div.buttons
+                paper-button(dialog-dismiss) No
+                paper-button(on-click="tryLogout") Yes
 
         //- The actual icons and when to show them and their related actions.
-        paper-icon-button(icon="account-box" on-click="openLoginDialog")
-        span blah
+        template(is="dom-if" if="{{!status.loggedIn}}")
+            paper-icon-button(icon="account-box" on-click="openLoginDialog")
+        template(is="dom-if" if="{{status.loggedIn}}")
+            paper-icon-button(icon="account-circle" on-click="openLogoutDialog")
+            
     script(src="./polymer-login.js")
