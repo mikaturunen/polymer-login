@@ -16,11 +16,6 @@ Polymer({
         logoutRoute: {
             type: String,
             value: "/user/login"
-        },
-
-        consoleLogsSilenced: {
-            type: Boolean,
-            value: true
         }
     },
 
@@ -31,18 +26,14 @@ Polymer({
         this.$.LoginDialog.open();
         this.$.InputUserName.focus();
 
-        if (this.consoleLogsSilenced === false) {
-            console.log(this.loginRoute, this.logoutRoute);
-        }
+        console.log(this.loginRoute, this.logoutRoute);
     },
 
     /**
      * Attempts to login into the system through the provided REST route.
      */
     tryLogin: function() {
-        if (this.consoleLogsSilenced === false) {
-            console.log("Attempting to login the user through route:", this.loginRoute);
-        }
+        console.log("Attempting to login the user through route:", this.loginRoute);
 
         this.$.TryLogin.body = JSON.stringify({
             user: this.$.InputUserName.value,
@@ -55,29 +46,27 @@ Polymer({
      * Callback for the login errors.
      */
     loginError: function(error: any) {
-        console.log(error);
+        console.log("Error:", error);
     },
 
     /**
      * Callback for login reponse.
      */
     loginResponse: function(result: any) {
-        if (result.detail.succeeded === true) {
-            // TODO Token received -- handle token and token passing (store in local storage?)
-            console.log(result);
-            this.$.LoginDialog.close();
-            // TODO pass token information forward and make sure it's included in all other calls
-        } else {
+        if (this.$.TryLogin.lastError || !this.$.TryLogin.lastResponse) {
+            // Error, something went wrong.
             // TODO fix the property and set the correct message
-            this.loginError({ message: "NUUU" });
+            this.loginError({ message: "NUUU", callDetails: result });
+            return;
         }
+
+        // User credentials received and the user has logged in.
+        console.log(this.$.TryLogin.lastResponse);
+        this.$.LoginDialog.close();
     },
 
     tryLogout: function() {
-        if (this.consoleLogsSilenced === false) {
-            console.log("Attempting to logout the user through route:", this.logoutRoute);
-        }
-
+        console.log("Attempting to logout the user through route:", this.logoutRoute);
         this.$.TryLogout.generateRequest();
     },
 

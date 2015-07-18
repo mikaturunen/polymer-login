@@ -21,6 +21,7 @@ dom-module(id="polymer-login")
             method="POST"
             url="[[loginRoute]]"
             handle-as="json"
+            on-error="loginError"
             on-response="loginResponse")
         //- Logout AJAX call
         iron-ajax(
