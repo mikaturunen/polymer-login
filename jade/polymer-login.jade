@@ -6,6 +6,11 @@ link(rel="import" href="../../paper-button/paper-button.html")
 link(rel="import" href="../../paper-input/paper-input.html")
 link(rel="import" href="../../paper-icon-button/paper-icon-button.html")
 link(rel="import" href="../../iron-ajax/iron-ajax.html")
+//- Why is the iconset required by the paper-icon-button and not required by it? Is this a known bug?
+//- Chrome browser does not display the icon and reports: 
+//- [iron-icon::_updateIcon]: could not find iconset `icons`, did you import the iconset?
+// TODO see if this is a bug in the component iron-icon, polymer or paper-icon-button
+link(rel="import" href="../../iron-iconset/iron-iconset.html")
 
 //-
     Most use cases the polymer-login displays a simple "login" or "logout" icon 
