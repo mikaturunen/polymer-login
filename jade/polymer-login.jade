@@ -7,6 +7,7 @@ link(rel="import" href="../../paper-input/paper-input.html")
 link(rel="import" href="../../paper-icon-button/paper-icon-button.html")
 link(rel="import" href="../../iron-ajax/iron-ajax.html")
 link(rel="import" href="../../iron-icons/iron-icons.html")
+link(rel="import" href="../../iron-meta/iron-meta.html")
 
 //-
     Most use cases the polymer-login displays a simple "login" or "logout" icon 
@@ -16,6 +17,11 @@ link(rel="import" href="../../iron-icons/iron-icons.html")
     
 dom-module(id="polymer-login")
     template
+        //- Defining the shared sate of the user/login
+        //- TODO mull over which one it should eventually be; are we talking of the login state here or
+        //- the domain data already? . . .
+        iron-meta(id="LoginMeta" key="user" value="{{status}}")
+        
         //- Login AJAX call
         iron-ajax(
             id="TryLogin"

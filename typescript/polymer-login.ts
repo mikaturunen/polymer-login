@@ -1,5 +1,16 @@
 "use strict";
 
+(() => {
+
+const defaultProperties = {
+    status: {
+        loggedIn: false,
+        user: {
+
+        }
+    }
+};
+
 Polymer({
     /** * What component we are attached to. */
     is: "polymer-login",
@@ -20,8 +31,16 @@ Polymer({
         /** {boolean} False when the user is not logged in, true when they have logged in. */
         status: {
             type: Object,
-            value: { loggedIn: false }
+            value: defaultProperties.status
         },
+    },
+
+    logMetaInfo: function() {
+        console.log(
+            "Meta information for status:",
+            this.$.LoginMeta.byKey("user"),
+            this.status
+        );
     },
 
     /**
@@ -60,6 +79,7 @@ Polymer({
      */
     handleError: function(error: any) {
         console.log("Error:", error);
+        this.logMetaInfo();
     },
 
     /**
@@ -69,14 +89,17 @@ Polymer({
         if (this.$.TryLogin.lastError || !this.$.TryLogin.lastResponse) {
             // Error, something went wrong.
             // TODO fix the property and set the correct message
+            this.status = defaultProperties.status;
             this.handleError({ message: "NUUU", callDetails: result });
             return;
         }
 
         // User credentials received and the user has logged in.
         console.log(this.$.TryLogin.lastResponse);
-        this.isLoggedIn = true;
+        this.status.loggedIn = true;
+        this.status = { loggedIn: true, user: {} };
         this.$.LoginDialog.close();
+        this.logMetaInfo();
     },
 
     tryLogout: function() {
@@ -88,6 +111,18 @@ Polymer({
      * Callback for logout reponse.
      */
     logoutResponse: function(result: any) {
-        console.log(result);
+        if (this.$.TryLogout.lastError || !this.$.TryLogout.lastResponse) {
+            // Error, something went wrong.
+            // TODO fix the property and set the correct message
+            this.status = defaultProperties.status;
+            this.handleError({ message: "NUUU", callDetails: result });
+            return;
+        }
+
+        this.status = defaultProperties.status;
+        this.$.LogoutnDialog.close();
+        this.logMetaInfo();
     }
 });
+
+})();
