@@ -19,7 +19,8 @@
             },
             status: {
                 type: Object,
-                value: defaultProperties.status
+                value: defaultProperties.status,
+                notify: true
             }
         },
         logMetaInfo: function () {
@@ -52,7 +53,6 @@
                 return;
             }
             console.log(this.$.TryLogin.lastResponse);
-            this.status.loggedIn = true;
             this.status = { loggedIn: true, user: {} };
             this.$.LoginDialog.close();
             this.logMetaInfo();

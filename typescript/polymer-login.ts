@@ -31,7 +31,8 @@ Polymer({
         /** {boolean} False when the user is not logged in, true when they have logged in. */
         status: {
             type: Object,
-            value: defaultProperties.status
+            value: defaultProperties.status,
+            notify: true
         },
     },
 
@@ -96,7 +97,6 @@ Polymer({
 
         // User credentials received and the user has logged in.
         console.log(this.$.TryLogin.lastResponse);
-        this.status.loggedIn = true;
         this.status = { loggedIn: true, user: {} };
         this.$.LoginDialog.close();
         this.logMetaInfo();
@@ -124,7 +124,7 @@ Polymer({
         this.status = defaultProperties.status;
         this.$.LogoutDialog.close();
         this.logMetaInfo();
-        
+
         this.fire("logout", this.status);
     }
 });
