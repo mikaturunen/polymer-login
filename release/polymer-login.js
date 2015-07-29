@@ -56,6 +56,7 @@
             this.status = { loggedIn: true, user: {} };
             this.$.LoginDialog.close();
             this.logMetaInfo();
+            this.fire("login", this.status);
         },
         tryLogout: function () {
             console.log("Attempting to logout the user through route:", this.logoutRoute);
@@ -68,8 +69,9 @@
                 return;
             }
             this.status = defaultProperties.status;
-            this.$.LogoutnDialog.close();
+            this.$.LogoutDialog.close();
             this.logMetaInfo();
+            this.fire("logout", this.status);
         }
     });
 })();

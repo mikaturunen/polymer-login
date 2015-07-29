@@ -100,6 +100,8 @@ Polymer({
         this.status = { loggedIn: true, user: {} };
         this.$.LoginDialog.close();
         this.logMetaInfo();
+
+        this.fire("login", this.status);
     },
 
     tryLogout: function() {
@@ -120,8 +122,10 @@ Polymer({
         }
 
         this.status = defaultProperties.status;
-        this.$.LogoutnDialog.close();
+        this.$.LogoutDialog.close();
         this.logMetaInfo();
+        
+        this.fire("logout", this.status);
     }
 });
 
